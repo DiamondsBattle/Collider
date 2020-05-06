@@ -9,6 +9,7 @@
 # TODO : Add Texture Packs
 # TODO : Add Menu
 # TODO : Add Pause
+# TODO : Add loadouts and multiple hands
 # TODO : Add Narrator
 # TODO : Add Music Player
 # TODO : Add SFX
@@ -48,6 +49,7 @@ def update():
             if distance <= 5:
                 togo_X, togo_Y, togo_Z = vehicle.position[0], vehicle.position[1], vehicle.position[2]
                 camera.position = Vec3(togo_X, togo_Y, togo_Z)
+    gun.position = Vec3((camera.position[0] + 1), camera.position[1], (camera.position[2] + 1))
 
 
 app = Ursina()
