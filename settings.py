@@ -1,4 +1,5 @@
 window.exit_button.visible = True
+window.exit_button.ignore_input = True
 window.fps_counter.enabled = True
 window.fps_counter.color = color.black
 window.cursor = True

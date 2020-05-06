@@ -52,6 +52,5 @@ def update():
 
 app = Ursina()
 
-# Nothing - BLANK
-
+camera.position = Vec3(0, 4, 0)
 app.run()
