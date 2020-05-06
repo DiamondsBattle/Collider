@@ -1,4 +1,3 @@
-
 window.exit_button.visible = True
 window.fps_counter.enabled = True
 window.fps_counter.color = color.black
@@ -14,8 +13,6 @@ debug_build = 0.1
 title = 'Collider [[DEBUG : Development Mode=' + str(development_mode) + ' || Version=' + str(version) + '|| FPS=' + str(0) + ' || Build=' + str(debug_build) + ']]'
 window.title = str(title)
 window.debug = True
-
-
 package_folder = Path(__file__).parent
 models_folder = 'assets/models/'
 prefabs_folder = 'assets/prefabs/'
@@ -25,3 +22,12 @@ textures_folder = 'assets/textures/'
 fonts_folder = 'assets/fonts/'
 compressed_textures_folder = 'assets/textures/compressed/'
 compressed_models_folder = 'assets/models/compressed/'
+Text.size = 0.05
+Text.default_resolution = 1080 * Text.size
+info = Text(text='')
+info.x = -0.5
+info.y = 0.4
+info.background = False
+info.color = color.red
+info.visible = True
+info.visible = False
