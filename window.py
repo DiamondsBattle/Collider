@@ -18,7 +18,7 @@
 from ursina import *
 from playsound import playsound
 import random
-import entities
+from entities import sky, ground, cube, player, vehicle
 
 def getDistanciationTo(orig: object, to: object) -> int:
     if orig.position[0] >= to.position[0]:
@@ -52,5 +52,6 @@ def update():
 
 app = Ursina()
 
+# Nothing - BLANK
 
 app.run()
