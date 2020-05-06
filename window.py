@@ -1,7 +1,22 @@
+# DONE : Add Ground
+# DONE : Add Sky
+# DONE : Add FirstPersonView
+# DONE : Add Crate
+# DONE : Add Crate Texture
+# TODO : Add Car
+# TODO : Add Gun
+# TODO : Add Shooting
+# TODO : Add Texture Packs
+# TODO : Add Menu
+# TODO : Add Pause
+# TODO : Add Game Saving
+# TODO : Add Multi-Player
+
 from ursina import *
 from playsound import playsound
 import random
 from assets.prefabs import first_person_controller
+import entities
 
 def getDistanciationTo(orig: object, to: object) -> int:
     if orig.position[0] >= to.position[0]:
@@ -31,13 +46,9 @@ def update():
             if distance <= 5:
                 togo_X, togo_Y, togo_Z = vehicle.position[0], vehicle.position[1], vehicle.position[2]
                 camera.position = Vec3(togo_X, togo_Y, togo_Z)
-    debug_fps = window.fps_counter.text
-    title = 'Collider [[DEBUG : Development Mode=' + str(development_mode) + ' || Version=' + str(version) + ' || FPS=' + str(debug_fps) + ' || Build=' + str(debug_build) + ']]'
-    window.title = str(title)
 
 
 app = Ursina()
-
 
 
 app.run()
