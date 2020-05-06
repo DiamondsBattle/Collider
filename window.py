@@ -9,13 +9,15 @@
 # TODO : Add Texture Packs
 # TODO : Add Menu
 # TODO : Add Pause
+# TODO : Add Narrator
+# TODO : Add Music Player
+# TODO : Add SFX
 # TODO : Add Game Saving
 # TODO : Add Multi-Player
 
 from ursina import *
 from playsound import playsound
 import random
-from assets.prefabs import first_person_controller
 import entities
 
 def getDistanciationTo(orig: object, to: object) -> int:

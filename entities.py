@@ -1,4 +1,5 @@
 from ursina import *
+from assets.prefabs import first_person_controller
 
 entities = []
 
