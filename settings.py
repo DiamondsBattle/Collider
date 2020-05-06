@@ -14,15 +14,15 @@ debug_build = 0.1
 title = 'Collider [[DEBUG : Development Mode=' + str(development_mode) + ' || Version=' + str(version) + '|| FPS=' + str(0) + ' || Build=' + str(debug_build) + ']]'
 window.title = str(title)
 window.debug = True
-package_folder = Path(__file__).parent
-models_folder = 'assets/models/'
-prefabs_folder = 'assets/prefabs/'
-scenes_folder = 'assets/scenes/'
-scripts_folder = 'assets/scripts/'
-textures_folder = 'assets/textures/'
-fonts_folder = 'assets/fonts/'
-compressed_textures_folder = 'assets/textures/compressed/'
-compressed_models_folder = 'assets/models/compressed/'
+application.package_folder = Path(__file__).parent
+application.models_folder = application.asset_folder / 'models/'
+application.prefabs_folder = application.asset_folder / 'prefabs/'
+application.scenes_folder = application.asset_folder / 'scenes/'
+application.scripts_folder = application.asset_folder / 'scripts/'
+application.textures_folder = application.asset_folder / 'textures/'
+application.fonts_folder = application.asset_folder / 'fonts/'
+application.compressed_textures_folder = application.textures_folder / 'compressed/'
+application.compressed_models_folder = application.models_folder / 'compressed/'
 Text.size = 0.05
 Text.default_resolution = 1080 * Text.size
 info = Text(text='')

@@ -18,7 +18,7 @@
 from ursina import *
 from playsound import playsound
 import random
-from entities import sky, ground, cube, player, vehicle
+from entities import *
 
 def getDistanciationTo(orig: object, to: object) -> int:
     if orig.position[0] >= to.position[0]:
