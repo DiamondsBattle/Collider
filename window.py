@@ -39,9 +39,6 @@ def input(key):
     pass
 
 def update():
-    global info, title, debug_build
-    if mouse.hovered_entity is not None:
-        info.text = mouse.hovered_entity.name
     if mouse.hovered_entity == "vehicle":
         if key == "f":
             print("f")
