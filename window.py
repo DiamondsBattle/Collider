@@ -45,9 +45,44 @@ def update():
             if distance <= 5:
                 togo_X, togo_Y, togo_Z = vehicle.position[0], vehicle.position[1], vehicle.position[2]
                 camera.position = Vec3(togo_X, togo_Y, togo_Z)
+    if key == "escape":
+        application.pause = not pause
+
+class Player(Entity):
+
+    def __init__(self, model, hp, loadout, **kwargs):
+        super().__init__(**kwargs)
+        self.player_controller = FirstPersonController()
+        self.model = model
+        self.hp = hp
+        self.loadout = loadout
+
+    def get_model(self):
+        return self.model
+
+    def get_hp(self):
+        return self.hp
+
+    def get_loadout(self):
+        return self.loadout
+
+class Bullet(Entity):
+
+    def __init__(self, model, speed, **kwargs):
+        super().__init__(**kwargs)
+        self.model = model
+        self.speed = speed
+
+    def get_model(self):
+        return self.model
+
+    def get_speed(self):
+        return self.speed
 
 
 app = Ursina()
+
+player = Player(model='player', hp=1000, loadout="Minigun")
 
 crate = Entity(model='cube',
                color=color.rgb(255, 255, 255),
@@ -63,8 +98,6 @@ car_base = Entity(model='car_lp',
                   position=Vec3(0, 5, 0),
                   rotation=Vec3(90, 0, 0))
 
-player_controller = FirstPersonController()
-player_model = Entity(model='player', parent=player_controller)
 
 ground = Entity(model='plane',
                 scale=32,
@@ -84,7 +117,7 @@ sky = Sky(scale=100,
 #               color=color.gray,
 #               texture='palette')
 
-gun = Entity(parent=player_controller,
+gun = Entity(parent=player.player_controller,
              model='gun_lp',
              color=color.gray,
              position=(player_controller.position[0],
