@@ -49,6 +49,7 @@ def update():
         application.pause = not pause
 
 class Player(Entity):
+    __slots__ = [model, hp, loadout]
 
     def __init__(self, model, hp, loadout, **kwargs):
         super().__init__(**kwargs)
@@ -98,12 +99,13 @@ class Weapon(Entity):
 
 class Car(Entity):
 
-    def __init__(self, model, armor, max_speed, acceleration):
+    def __init__(self, model, armor, max_speed, acceleration, price, **kwargs):
         super().__init__(**kwargs)
         self.model = model
         self.armor = armor
         self.max_speed = max_speed
         self.acceleration = acceleration
+        self.price = price
 
     def get_model(self):
         return model
@@ -117,6 +119,9 @@ class Car(Entity):
     def get_acceleration(self):
         return acceleration
 
+    def get_price(self):
+        return price
+
 
 app = Ursina()
 
@@ -129,14 +134,17 @@ crate = Entity(model='cube',
                collider='box',
                position=Vec3(0, 0, 10))
 
-car_base = Entity(model='car_lp',
-                  color=color.rgb(0, 0, 0),
-                  scale=(0.01, 0.01, 0.01),
-                  collider='car_lp',
-                  position=Vec3(0, 5, 0),
-                  rotation=Vec3(90, 0, 0))
 
-car_turr = Car(model='car_turr')
+car_turr = Car(model='car_turr', armor=0, max_speed=100, acceleration=8, price=1000)
+car_narrow = Car(model='car_narrow', armor=1, max_speed=150, acceleration=5, price=2850)
+car_mustang = Car(model='car_mustang', armor=2, max_speed=170, acceleration=6, price=5890)
+car_cabrot = Car(model='car_cabrot', armor=3, max_speed=210, acceleration=4, price=10500)
+car_blade = Car(model='car_blade', armor=5, max_speed=260, acceleration=3, price=25000)
+
+gun_sniper = Weapon(model='gun_sniper', fire_rate=2, ammo_type='heavy')
+gun_pistol = Weapon(model='gun_pistol', fire_rate=.25, ammo_type='light')
+gun_smg = Weapon(model='gun_smg', fire_rate=.10, ammo_type='light')
+gun_assault_rifle = Weapon(model='gun_assault_rifle', fire_rate=.50, ammo_type='normal')
 
 ground = Entity(model='plane',
                 scale=32,
@@ -166,10 +174,5 @@ gun = Entity(parent=player.player_controller,
              scale=Vec3(0.25, 0.25, 0.25),
              collider='gun_lp')
 
-car_mustang = Entity(model='car_lp',
-                     scale=Vec3(1, 1, 1),
-                     collider='car_lp',
-                     position=Vec3(0, 10, 0),
-                     color=color.orange)
 
 app.run()
