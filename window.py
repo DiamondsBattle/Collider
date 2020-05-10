@@ -64,6 +64,7 @@ car_base = Entity(model='car_lp',
                   rotation=Vec3(90, 0, 0))
 
 player_controller = FirstPersonController()
+player_model = Entity(model='player', parent=player_controller)
 
 ground = Entity(model='plane',
                 scale=32,
@@ -83,12 +84,12 @@ sky = Sky(scale=100,
 #               color=color.gray,
 #               texture='palette')
 
-gun = Entity(parent=player,
+gun = Entity(parent=player_controller,
              model='gun_lp',
              color=color.gray,
-             position=(player.position[0],
-                       player.position[1],
-                       (player.position[2] + 3)),
+             position=(player_controller.position[0],
+                       player_controller.position[1],
+                       (player_controller.position[2] + 3)),
              rotation_y=90,
              scale=Vec3(0.25, 0.25, 0.25),
              collider='gun_lp')
