@@ -79,6 +79,44 @@ class Bullet(Entity):
     def get_speed(self):
         return self.speed
 
+class Weapon(Entity):
+
+    def __init__(self, model, fire_rate, ammo_type, **kwargs):
+        super().__init__(**kwargs)
+        self.model = model
+        self.fire_rate = fire_rate
+        self.ammo_type = ammo_type
+
+    def get_model(self):
+        return model
+
+    def get_fire_rate(self):
+        return fire_rate
+
+    def get_ammo_type(self):
+        return ammo_type
+
+class Car(Entity):
+
+    def __init__(self, model, armor, max_speed, acceleration):
+        super().__init__(**kwargs)
+        self.model = model
+        self.armor = armor
+        self.max_speed = max_speed
+        self.acceleration = acceleration
+
+    def get_model(self):
+        return model
+
+    def get_armor(self):
+        return armor
+
+    def get_max_speed(self):
+        return max_speed
+
+    def get_acceleration(self):
+        return acceleration
+
 
 app = Ursina()
 
@@ -98,6 +136,7 @@ car_base = Entity(model='car_lp',
                   position=Vec3(0, 5, 0),
                   rotation=Vec3(90, 0, 0))
 
+car_turr = Car(model='car_turr')
 
 ground = Entity(model='plane',
                 scale=32,
