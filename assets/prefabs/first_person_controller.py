@@ -11,9 +11,10 @@ class FirstPersonController(Entity):
 
         self.cursor = Entity(
             parent=camera.ui,
-            model='sphere',
+            model='quad',
+            texture='cursor',
             color=color.red,
-            scale=.01
+            scale=.1
             )
 
         self.position = (0, 1, 1)

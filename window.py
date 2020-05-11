@@ -3,11 +3,11 @@
 # DONE : Add FirstPersonView
 # DONE : Add Crate
 # DONE : Add Crate Texture
+# DONE : Add Menu
 # TODO : Add Car
 # TODO : Add Gun
 # TODO : Add Shooting
 # TODO : Add Texture Packs
-# TODO : Add Menu
 # TODO : Add Pause
 # TODO : Add loadouts and multiple hands
 # TODO : Add Narrator
@@ -38,22 +38,8 @@ def input(key):
         print("Shooted")
 
 def update():
-    if mouse.hovered_entity == "vehicle":
-        if key == "f":
-            print("f")
-            distance: int = getDistanciationTo(orig=camera, to=vehicle)
-            if distance <= 5:
-                togo_X, togo_Y, togo_Z = vehicle.position[0], vehicle.position[1], vehicle.position[2]
-                camera.position = Vec3(togo_X, togo_Y, togo_Z)
     if key == "escape":
-        change_menu_all_visibility(conf=True)
-
-def change_menu_all_visibility(conf):
-    if conf:
-        menu.enabled = not menu.enabled
-        menu.btn_solo.enabled = not menu.btn_solo.enabled
-        menu.btn_multi.enabled = not menu.btn_multi.enabled
-        menu.btn_quit.enabled = not menu.btn_quit.enabled
+        MM.change_menu_visibility()
 
 
 app = Ursina()

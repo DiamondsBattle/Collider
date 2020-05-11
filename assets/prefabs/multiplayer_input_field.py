@@ -4,7 +4,7 @@ class MultiplayerInputField(Button):
 
     def __init__(self, default_value='', label='', **kwargs):
         super().__init__(
-            scale=(.3, .1),
+            scale=(.5, .1),
             highlight_scale=1,
             pressed_scale=1,
             collider='box',
@@ -14,7 +14,7 @@ class MultiplayerInputField(Button):
                 setattr(self, key, value)
 
         self.default_value = default_value
-        self.text_field = TextField(world_parent=self, x=-.45, y=.3, z=-.1, max_lines=1)
+        self.text_field = TextField(world_parent=self, x=-.45, y=.3, z=-.1, max_lines=2)
         self.text_field.scale *= 2
         self.text_field.text = default_value
         self.text_field.render()
