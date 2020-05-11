@@ -1,6 +1,7 @@
 from ursina import *
 from assets.prefabs.multiplayer_input_field import MultiplayerInputField as MIF
-
+from assets.prefabs.load_textures import LoadTextures
+from assets.prefabs.player import Player
 
 class MainMenu(Entity):
     def __init__(self, **kwargs):
@@ -11,19 +12,23 @@ class MainMenu(Entity):
         self.input_multi_address = MIF()
         self.input_multi_address.enabled = False
 
-    @staticmethod
-    def play_solo():
-        player = Player(model='player',
-                        hp=1000,
-                        loadout="pistol")
+    def play_solo(self):
+        self.change_menu_visibility(conf=True)
+        LoadTextures()
 
-    @staticmethod
-    def play_multi():
-        change_menu_type(conf=True)
+    def play_multi(self):
+        self.change_multi_visibility(conf=True)
 
-    def change_menu_visibility_type(self, conf):
+    def change_menu_visibility(self, conf):
         if conf:
-            menu.btn_solo.enabled = not menu.btn_solo.enabled
-            menu.btn_multi.enabled = not menu.btn_multi.enabled
-            menu.btn_quit.enabled = not menu.btn_quit.enabled
-            menu.input_multi_address.enabled = not menu.input_multi_address.enabled
+            self.btn_solo.enabled = not self.btn_solo.enabled
+            self.btn_multi.enabled = not self.btn_multi.enabled
+            self.btn_quit.enabled = not self.btn_quit.enabled
+            self.enabled = not self.enabled
+
+    def change_multi_visibility(self, conf):
+        if conf:
+            self.input_multi_address.enabled = not self.input_multi_address.enabled
+            self.btn_solo.enabled = not self.btn_solo.enabled
+            self.btn_multi.enabled = not self.btn_multio.enabled
+            self.btn_quit.enabled = not self.btn_quit.enabled
