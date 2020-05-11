@@ -19,6 +19,35 @@
 from ursina import *
 from assets.prefabs.first_person_controller import FirstPersonController
 
+class Menu:
+
+    def __init__(self):
+        self.button_solo = Button(text='Solo',
+                                  color=color.black,
+                                  highlight_color=color.black33)
+
+        self.button_multi = Button(text='Multiplayer',
+                                   color=color.black,
+                                   highlight_color=color.black33,
+                                   on_click=play_multiplayer)
+
+        self.button_quit = Button(text='Quit Game',
+                                  color=color.black,
+                                  highlight_color=color.red,
+                                  on_click=self.quit_app,
+                                  )
+
+    def play(self):
+        application.resume()
+
+    def resume(self):
+        application.resume()
+
+    def quit_app(self):
+        application.quit()
+
+    def quit_mode(self):
+        pass
 def getDistanciationTo(orig: object, to: object) -> int:
     if orig.position[0] >= to.position[0]:
         pos_X = orig.position[0] - to.position[0]
@@ -46,20 +75,16 @@ def update():
                 togo_X, togo_Y, togo_Z = vehicle.position[0], vehicle.position[1], vehicle.position[2]
                 camera.position = Vec3(togo_X, togo_Y, togo_Z)
     if key == "escape":
-        application.pause = not pause
+        menu.enabled = not menu.enabled
 
 class Player(Entity):
-    __slots__ = [model, hp, loadout]
+    __slots__ = ['hp', 'loadout']
 
-    def __init__(self, model, hp, loadout, **kwargs):
+    def __init__(self, hp, loadout, **kwargs):
         super().__init__(**kwargs)
         self.player_controller = FirstPersonController()
-        self.model = model
         self.hp = hp
         self.loadout = loadout
-
-    def get_model(self):
-        return self.model
 
     def get_hp(self):
         return self.hp
@@ -69,27 +94,21 @@ class Player(Entity):
 
 class Bullet(Entity):
 
-    def __init__(self, model, speed, **kwargs):
+    def __init__(self, speed, **kwargs):
         super().__init__(**kwargs)
-        self.model = model
         self.speed = speed
-
-    def get_model(self):
-        return self.model
 
     def get_speed(self):
         return self.speed
 
 class Weapon(Entity):
 
-    def __init__(self, model, fire_rate, ammo_type, **kwargs):
+    def __init__(self, fire_rate, ammo_type, charger, price, **kwargs):
         super().__init__(**kwargs)
-        self.model = model
         self.fire_rate = fire_rate
         self.ammo_type = ammo_type
+        self.charger = charger
 
-    def get_model(self):
-        return model
 
     def get_fire_rate(self):
         return fire_rate
@@ -97,18 +116,20 @@ class Weapon(Entity):
     def get_ammo_type(self):
         return ammo_type
 
+    def get_charger(self):
+        return charger
+
+    def get_price(self):
+        return price
+
 class Car(Entity):
 
-    def __init__(self, model, armor, max_speed, acceleration, price, **kwargs):
+    def __init__(self, armor, max_speed, acceleration, price, **kwargs):
         super().__init__(**kwargs)
-        self.model = model
         self.armor = armor
         self.max_speed = max_speed
         self.acceleration = acceleration
         self.price = price
-
-    def get_model(self):
-        return model
 
     def get_armor(self):
         return armor
@@ -125,7 +146,9 @@ class Car(Entity):
 
 app = Ursina()
 
-player = Player(model='player', hp=1000, loadout="Minigun")
+player = Player(model='player',
+                hp=1000,
+                loadout="pistol")
 
 crate = Entity(model='cube',
                color=color.rgb(255, 255, 255),
@@ -135,16 +158,67 @@ crate = Entity(model='cube',
                position=Vec3(0, 0, 10))
 
 
-car_turr = Car(model='car_turr', armor=0, max_speed=100, acceleration=8, price=1000)
-car_narrow = Car(model='car_narrow', armor=1, max_speed=150, acceleration=5, price=2850)
-car_mustang = Car(model='car_mustang', armor=2, max_speed=170, acceleration=6, price=5890)
-car_cabrot = Car(model='car_cabrot', armor=3, max_speed=210, acceleration=4, price=10500)
-car_blade = Car(model='car_blade', armor=5, max_speed=260, acceleration=3, price=25000)
+car_turr = Car(model='car_turr',
+               armor=0,
+               max_speed=100,
+               acceleration=8,
+               price=1000)
 
-gun_sniper = Weapon(model='gun_sniper', fire_rate=2, ammo_type='heavy')
-gun_pistol = Weapon(model='gun_pistol', fire_rate=.25, ammo_type='light')
-gun_smg = Weapon(model='gun_smg', fire_rate=.10, ammo_type='light')
-gun_assault_rifle = Weapon(model='gun_assault_rifle', fire_rate=.50, ammo_type='normal')
+car_narrow = Car(model='car_narrow',
+                 armor=1,
+                 max_speed=150,
+                 acceleration=5,
+                 price=2850)
+
+# car_mustang = Car(model='car_mustang', # ERROR : 'ValueError: invalid literal for int() with base 10: '\n''
+# armor=2,
+# max_speed=170,
+# acceleration=6,
+# price=5890)
+
+car_cabrot = Car(model='car_cabrot',
+                 armor=3,
+                 max_speed=210,
+                 acceleration=4,
+                 price=10500)
+
+car_blade = Car(model='car_blade',
+                armor=5,
+                max_speed=260,
+                acceleration=3,
+                price=25000)
+
+
+gun_sniper = Weapon(model='gun_sniper',
+                    fire_rate=2,
+                    ammo_type='heavy',
+                    charger=4,
+                    price=6789)
+
+gun_pistol = Weapon(model='gun_pistol',
+                    fire_rate=.25,
+                    ammo_type='light',
+                    charger=15,
+                    price=500)
+
+gun_smg = Weapon(model='gun_smg',
+                 fire_rate=.20,
+                 ammo_type='light',
+                 charger=32,
+                 price=1230)
+
+gun_assault_rifle = Weapon(model='gun_assault_rifle',
+                           fire_rate=.50,
+                           ammo_type='normal',
+                           charger=25,
+                           price=2000)
+
+gun_minigun = Weapon(model='gun_minigun',
+                     fire_rate=.10,
+                     ammo_type='heavy',
+                     charger=9999,
+                     price=5000)
+
 
 ground = Entity(model='plane',
                 scale=32,
@@ -164,15 +238,5 @@ sky = Sky(scale=100,
 #               color=color.gray,
 #               texture='palette')
 
-gun = Entity(parent=player.player_controller,
-             model='gun_lp',
-             color=color.gray,
-             position=(player_controller.position[0],
-                       player_controller.position[1],
-                       (player_controller.position[2] + 3)),
-             rotation_y=90,
-             scale=Vec3(0.25, 0.25, 0.25),
-             collider='gun_lp')
-
-
+menu = Menu
 app.run()
