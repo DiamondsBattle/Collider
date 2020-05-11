@@ -1,11 +1,13 @@
 from ursina import *
-from assets.prefabs import first_person_controller
+from assets.prefabs.multiplayer_input_field import MultiplayerInputField as MIF
 
 app = Ursina()
 
+def input(key):
+    if key == "escape":
+        change_menu_all_visibility(conf=True)
+
 def update():
-    print(camera.forward)
+    pass
 
-
-player = first_person_controller.FirstPersonController()
 app.run()

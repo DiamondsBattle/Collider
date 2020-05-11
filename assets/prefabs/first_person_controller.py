@@ -1,6 +1,5 @@
 from ursina import *
 
-
 class FirstPersonController(Entity):
 
     def __init__(self, **kwargs):
