@@ -18,6 +18,7 @@
 
 from ursina import *
 from assets.prefabs.main_menu import MainMenu as MM
+from assets.prefabs.secondary_menu import SecondaryMenu as SM
 
 def getDistanciationTo(orig: object, to: object) -> int:
     if orig.position[0] >= to.position[0]:
@@ -40,10 +41,13 @@ def input(key):
 def update():
     if key == "escape":
         MM.changeMenuVisibility(self)
+        SM.change_menu_visibility(self)
 
 
 app = Ursina()
 
-menu = MM(model='quad', texture='background', scale=(15, 8.5))
+main_menu = MM(model='quad', texture='background', scale=(15, 8.5))
+
+secondary_menu = SM(model='quad', scale=(15, 8.5))
 
 app.run()
