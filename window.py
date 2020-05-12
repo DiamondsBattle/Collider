@@ -39,7 +39,7 @@ def input(key):
 
 def update():
     if key == "escape":
-        MM.change_menu_visibility()
+        MM.changeMenuVisibility(self)
 
 
 app = Ursina()

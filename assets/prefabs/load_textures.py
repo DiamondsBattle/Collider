@@ -24,10 +24,10 @@ def LoadTextures():
                          price=2850)
 
     # car_mustang = Vehicle(model='car_mustang', # ERROR : 'ValueError: invalid literal for int() with base 10: '\n''
-    # armor=2,
-    # max_speed=170,
-    # acceleration=6,
-    # price=5890)
+    #                       armor=2,
+    #                       max_speed=170,
+    #                       acceleration=6,
+    #                       price=5890)
 
     car_cabrot = Vehicle(model='car_cabrot',
                          armor=3,

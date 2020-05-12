@@ -5,7 +5,7 @@ class Player(Entity):
     __slots__ = ['hp', 'loadout']
 
     def __init__(self, hp, loadout, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(**kwargs, scale=(0.5, 0.5, 0.5))
         self.player_controller = FPS()
         self.hp = hp
         self.loadout = loadout
