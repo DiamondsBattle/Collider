@@ -20,7 +20,7 @@ from ursina import *
 from assets.prefabs.main_menu import MainMenu as MM
 from assets.prefabs.secondary_menu import SecondaryMenu as SM
 from assets.prefabs.loading_menu import LoadingMenu as LM
-from assets.prefabs.multi import Connect
+from assets.scripts.multi import Connect
 
 
 def getDistanciationTo(orig: object, to: object) -> int:

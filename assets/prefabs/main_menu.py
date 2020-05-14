@@ -1,9 +1,7 @@
 from ursina import *
 from assets.prefabs.multiplayer_input_field import MultiplayerInputField as MIF
-from assets.prefabs.load_textures import LoadTextures
-from assets.prefabs.player import Player
-from assets.prefabs.multi import Connect, errorMessage
-from assets.prefabs.load_textures import LoadTextures
+from assets.scripts.multi import Connect
+from assets.scripts.load_textures import LoadTextures
 from assets.prefabs.loading_menu import LoadingMenu
 
 class MainMenu(Entity):
