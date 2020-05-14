@@ -4,7 +4,7 @@
 # DONE : Add Crate
 # DONE : Add Crate Texture
 # DONE : Add Menu
-# TODO : Add Car
+# TODO : Add Cars
 # TODO : Add Guns
 # TODO : Add Shooting
 # TODO : Add Texture Packs
