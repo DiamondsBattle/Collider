@@ -2,7 +2,9 @@ from ursina import *
 from assets.prefabs.multiplayer_input_field import MultiplayerInputField as MIF
 from assets.prefabs.load_textures import LoadTextures
 from assets.prefabs.player import Player
-from assets.prefabs.multi import Connect
+from assets.prefabs.multi import Connect, errorMessage
+from assets.prefabs.load_textures import LoadTextures
+from assets.prefabs.loading_menu import LoadingMenu
 
 class MainMenu(Entity):
     def __init__(self, **kwargs):
@@ -16,12 +18,17 @@ class MainMenu(Entity):
         self.input_multi_address.enabled = False
         self.btn_multi_connect = Button(text='Connect', background=True, on_click=Connect, color=color.black, highlight_color=color.rgb(7, 118, 10), collider='box', origin=(0, 1), scale=(.5, .15))
         self.btn_multi_connect.enabled = False
-        self.txt_multi_connect_response = Text(text='ERROR', color=color.black, origin=(0, 6), resolution=12)
+        self.txt_multi_connect_response = Text(text='', color=color.black, origin=(0, 6), resolution=12)
         self.txt_multi_connect_response.enabled = False
 
     def playSolo(self):
         self.changeMenuVisibility()
+        print('OK0')
+        LoadingMenu.change_menu_visibility()
+        print('OK1')
         LoadTextures()
+        print('OK2')
+        LoadingMenu.change_menu_visibility()
 
     def playMulti(self):
         self.changeMultiVisibility()

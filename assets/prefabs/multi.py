@@ -1,4 +1,7 @@
 from ursina import *
 
 def Connect(host_ip='', user_ip=''):
-    return 'ERROR : Multiplayer not available yet'
+    errorMessage(error='Error : Multiplayer not avaible yet !')
+
+def errorMessage(error):
+    return error
