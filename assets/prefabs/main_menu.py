@@ -1,6 +1,6 @@
 from ursina import *
 from assets.prefabs.multiplayer_input_field import MultiplayerInputField as MIF
-from assets.scripts.multi import Connect
+from assets.scripts.multi import connect
 from assets.scripts.load_textures import LoadTextures
 from assets.prefabs.loading_menu import LoadingMenu
 
@@ -14,7 +14,7 @@ class MainMenu(Entity):
         self.btn_back.enabled = False
         self.input_multi_address = MIF()
         self.input_multi_address.enabled = False
-        self.btn_multi_connect = Button(text='Connect', background=True, on_click=Connect, color=color.black, highlight_color=color.rgb(7, 118, 10), collider='box', origin=(0, 1), scale=(.5, .15))
+        self.btn_multi_connect = Button(text='connect', background=True, on_click=connect, color=color.black, highlight_color=color.rgb(7, 118, 10), collider='box', origin=(0, 1), scale=(.5, .15))
         self.btn_multi_connect.enabled = False
         self.txt_multi_connect_response = Text(text='', color=color.black, origin=(0, 6), resolution=12)
         self.txt_multi_connect_response.enabled = False

@@ -1,5 +1,6 @@
 from ursina import *
 
+
 class Weapon(Entity):
 
     def __init__(self, fire_rate, ammo_type, charger, price, **kwargs):
@@ -7,15 +8,29 @@ class Weapon(Entity):
         self.fire_rate = fire_rate
         self.ammo_type = ammo_type
         self.charger = charger
+        self.price = price
+        self.ammo_in_clip = charger
+        self.bullets_models = {'light': 'bullet_light',
+                               'normal': 'bullet_normal',
+                               'heavy': 'bullet_heavy'}
+        self.bullets_speed = {'light': '10',
+                              'normal': '8',
+                              'heavy': '7'}
 
-    def get_fire_rate(self):
-        return fire_rate
+    def getFireRate(self):
+        return self.fire_rate
 
-    def get_ammo_type(self):
-        return ammo_type
+    def getAmmoType(self):
+        return self.ammo_type
 
-    def get_charger(self):
-        return charger
+    def getCharger(self):
+        return self.charger
 
-    def get_price(self):
-        return price
+    def getPrice(self):
+        return self.price
+
+    def getBulletModel(self):
+        return self.bullets_models[self.ammo_type]
+
+    def getBulletSpeed(self):
+        return self.bullet_speed[self.ammo_type]

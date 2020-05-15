@@ -20,7 +20,8 @@ from ursina import *
 from assets.prefabs.main_menu import MainMenu as MM
 from assets.prefabs.secondary_menu import SecondaryMenu as SM
 from assets.prefabs.loading_menu import LoadingMenu as LM
-from assets.scripts.multi import Connect
+from assets.scripts.shoot_bullet import shoot
+from assets.scripts.multi import connect
 
 
 def getDistanciationTo(orig: object, to: object) -> int:
@@ -39,15 +40,15 @@ def getDistanciationTo(orig: object, to: object) -> int:
 
 
 def input(key):
-    if key == "mouse_left":
-        print("Shooted")
+    if key == "left mouse down":
+        shoot(facing='North', gun=)
 
 
 def update():
     if key == "escape":
         if MM.enabled is False and LM.enabled is False:
             SM.change_menu_visibility(self)
-    main_menu.txt_multi_connect_response.text = Connect()
+    main_menu.txt_multi_connect_response.text = connect()
 
 
 app = Ursina()

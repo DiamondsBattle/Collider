@@ -15,12 +15,3 @@ class Player(Entity):
 
     def get_loadout(self):
         return self.loadout
-
-class Bullet(Entity):
-
-    def __init__(self, speed, **kwargs):
-        super().__init__(**kwargs)
-        self.speed = speed
-
-    def get_speed(self):
-        return self.speed
