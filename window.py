@@ -39,22 +39,23 @@ def getDistanciationTo(orig: object, to: object) -> int:
     return int(distanciation)
 
 
+app = Ursina()
+
 def input(key):
     if key == "left mouse down":
-        shoot(facing='North', gun=)
+        # shoot(facing='North', gun=)
+        print("Shooted !")
 
 
 def update():
     if key == "escape":
         if MM.enabled is False and LM.enabled is False:
-            SM.change_menu_visibility(self)
+            SM.changeMenuVisibility(self)
     main_menu.txt_multi_connect_response.text = connect()
 
 
-app = Ursina()
 
 main_menu = MM(model='quad', texture='background', scale=(15, 8.5))
 secondary_menu = SM(model='quad', scale=(15, 8.5))
-loading_menu = LM(model='quad', texture='loading_textures_background', scale=(15, 8.5))
 
 app.run()

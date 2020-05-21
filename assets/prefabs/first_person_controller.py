@@ -12,7 +12,7 @@ class FirstPersonController(Entity):
         self.cursor = Entity(
             parent=camera.ui,
             model='quad',
-            texture='cursor',
+            texture='crosshair',
             color=color.red,
             scale=.1
             )

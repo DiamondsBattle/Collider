@@ -3,6 +3,7 @@ from assets.prefabs.player import Player
 from assets.prefabs.vehicle import Vehicle
 from assets.prefabs.weapon import Weapon
 
+
 def LoadTextures():
     crate = Entity(model='cube',
                    color=color.rgb(255, 255, 255),
@@ -92,4 +93,4 @@ def LoadTextures():
     player = Player(model='player',
                     hp=1000,
                     loadout='minigun')
-
+    return True

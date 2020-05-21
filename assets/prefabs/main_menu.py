@@ -1,10 +1,13 @@
 from ursina import *
 from assets.prefabs.multiplayer_input_field import MultiplayerInputField as MIF
 from assets.scripts.multi import connect
-from assets.scripts.load_textures import LoadTextures
-from assets.prefabs.loading_menu import LoadingMenu
+from assets.scripts.load_textures import LoadTextures as LoadTextures
+from assets.prefabs.loading_menu import LoadingMenu as LM
+from time import sleep
+
 
 class MainMenu(Entity):
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.btn_solo = Button(text='Solo', background=True, on_click=self.playSolo, color=color.black, collider='box', origin=(.95, -.6), scale=(.5, .15))
@@ -18,15 +21,11 @@ class MainMenu(Entity):
         self.btn_multi_connect.enabled = False
         self.txt_multi_connect_response = Text(text='', color=color.black, origin=(0, 6), resolution=12)
         self.txt_multi_connect_response.enabled = False
+        self.loading_menu = LM(model='quad', texture='loading_textures_background', scale=(15, 8.5), enabled=False)
 
     def playSolo(self):
         self.changeMenuVisibility()
-        print('OK0')
-        LoadingMenu.change_menu_visibility()
-        print('OK1')
-        LoadTextures()
-        print('OK2')
-        LoadingMenu.change_menu_visibility()
+        self.loading_menu.changeMenuVisibility()
 
     def playMulti(self):
         self.changeMultiVisibility()

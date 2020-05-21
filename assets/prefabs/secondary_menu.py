@@ -12,7 +12,7 @@ class SecondaryMenu(Entity):
         self.btn_goto_menu = Button(text='Return to the Menu')
         self.btn_goto_menu.enabled = False
 
-    def change_menu_visibility(self):
+    def changeMenuVisibility(self):
         self.enabled = not self.enabled
         self.btn_play.enabled = not btn_play.enabled
         self.btn_settings.enabled = not btn_settings.enabled
