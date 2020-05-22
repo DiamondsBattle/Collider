@@ -1,7 +1,7 @@
 from ursina import *
 from assets.prefabs.multiplayer_input_field import MultiplayerInputField as MIF
 from assets.scripts.multi import connect
-from assets.scripts.load_textures import LoadTextures as LoadTextures
+from assets.scripts.define_objects import defineTextures as LoadTextures
 from assets.prefabs.loading_menu import LoadingMenu as LM
 from time import sleep
 

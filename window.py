@@ -22,6 +22,9 @@ from assets.prefabs.secondary_menu import SecondaryMenu as SM
 from assets.prefabs.loading_menu import LoadingMenu as LM
 from assets.scripts.shoot_bullet import shoot
 from assets.scripts.multi import connect
+from assets.prefabs.money_counter import MoneyCounter as MC
+from assets.scripts.define_objects import defineTextures
+from assets.prefabs.player import Player
 
 
 def getDistanciationTo(orig: object, to: object) -> int:
@@ -52,7 +55,12 @@ def update():
         if MM.enabled is False and LM.enabled is False:
             SM.changeMenuVisibility(self)
     main_menu.txt_multi_connect_response.text = connect()
-
+    if hasLoadedTextures:
+        player = Player(model='player',
+                        hp=1000,
+                        loadout='minigun',
+                        money=23181231)
+        money_counter = MC(position=(0, 0, 0), money=player.getMoney())
 
 
 main_menu = MM(model='quad', texture='background', scale=(15, 8.5))
