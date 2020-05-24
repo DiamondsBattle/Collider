@@ -6,4 +6,3 @@ psd-tools
 imageio
 psutil
 hurry.filesize
-time
