@@ -1,2 +1,9 @@
 ursina
+panda3d
+pillow
+screeninfo
+psd-tools
+imageio
+psutil
+hurry.filesize
 time
