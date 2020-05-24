@@ -4,8 +4,8 @@
 
 These are the current versions supported by the Security Policy :
 
-| Version   | Supported          |
-| 1.x       | :white_check_mark: |
+| Version   | Supported          | \n
+| 1.x       | :white_check_mark: | \n
 | < 0.9.x   | :x:                |
 
 ## Reporting a Vulnerability
