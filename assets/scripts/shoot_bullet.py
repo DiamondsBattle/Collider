@@ -9,3 +9,9 @@ def shoot(gun, gun_pos, facing):
     facing = facing
     Bullet(speed=speed, model=bullet_model, position=origin)
     Bullet.move(self, bullet_speed=speed, position=Bullet.position)
+
+def shoot_test():
+    bullet = Entity(model='sphere')
+    for i in range(20):
+        time.sleep(2)
+        bullet.position += 1

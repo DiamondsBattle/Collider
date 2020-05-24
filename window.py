@@ -23,7 +23,7 @@ from assets.prefabs.loading_menu import LoadingMenu as LM
 from assets.scripts.shoot_bullet import shoot
 from assets.scripts.multi import connect
 from assets.prefabs.money_counter import MoneyCounter as MC
-from assets.scripts.define_objects import defineTextures
+from assets.scripts.define_objects import defineObjects
 from assets.prefabs.player import Player
 
 
@@ -46,23 +46,32 @@ app = Ursina()
 
 def input(key):
     if key == "left mouse down":
-        # shoot(facing='North', gun=)
+        shoot_test()
         print("Shooted !")
+
+def load_textures():
+    global loaded_textures
+    if not loaded_textures:
+        if main_menu.has_changed_loading_menu_visibility:
+            defineObjects()
+            loaded_textures = True
+            player = Player(model='player',
+                            hp=1000,
+                            loadout='minigun',
+                            money=23181231)
+            money_counter = MC(position=(0, 0, 0),
+                               money=player.getMoney())
 
 
 def update():
-    if key == "escape":
-        if MM.enabled is False and LM.enabled is False:
-            SM.changeMenuVisibility(self)
-    main_menu.txt_multi_connect_response.text = connect()
-    if hasLoadedTextures:
-        player = Player(model='player',
-                        hp=1000,
-                        loadout='minigun',
-                        money=23181231)
-        money_counter = MC(position=(0, 0, 0), money=player.getMoney())
+    # if key == "escape":
+    #     if MM.enabled is False and LM.enabled is False:
+    #         SM.changeMenuVisibility(self)
+    # main_menu.txt_multi_connect_response.text = connect()
+    load_textures()
 
 
+loaded_textures = False
 main_menu = MM(model='quad', texture='background', scale=(15, 8.5))
 secondary_menu = SM(model='quad', scale=(15, 8.5))
 

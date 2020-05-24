@@ -11,5 +11,3 @@ class LoadingMenu(Entity):
     def changeMenuVisibility(self):
         self.enabled = not self.enabled
         # self.loading_icon.enabled = not self.loading_icon.enabled
-        sleep(10)
-        return True

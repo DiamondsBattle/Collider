@@ -4,7 +4,7 @@ from assets.prefabs.vehicle import Vehicle
 from assets.prefabs.weapon import Weapon
 
 
-def defineTextures():
+def defineObjects():
     crate = Entity(model='cube',
                    color=color.rgb(255, 255, 255),
                    scale=(2, 2, 2),

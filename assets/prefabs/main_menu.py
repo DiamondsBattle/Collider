@@ -1,7 +1,6 @@
 from ursina import *
 from assets.prefabs.multiplayer_input_field import MultiplayerInputField as MIF
 from assets.scripts.multi import connect
-from assets.scripts.define_objects import defineTextures as LoadTextures
 from assets.prefabs.loading_menu import LoadingMenu as LM
 from time import sleep
 
@@ -22,10 +21,12 @@ class MainMenu(Entity):
         self.txt_multi_connect_response = Text(text='', color=color.black, origin=(0, 6), resolution=12)
         self.txt_multi_connect_response.enabled = False
         self.loading_menu = LM(model='quad', texture='loading_textures_background', scale=(15, 8.5), enabled=False)
+        self.has_changed_loading_menu_visibility = False
 
     def playSolo(self):
         self.changeMenuVisibility()
         self.loading_menu.changeMenuVisibility()
+        self.has_changed_loading_menu_visibility = True
 
     def playMulti(self):
         self.changeMultiVisibility()
