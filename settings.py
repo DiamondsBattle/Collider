@@ -1,3 +1,5 @@
+from ursina import *
+
 window.exit_button.visible = True
 window.exit_button.ignore_input = True
 window.fps_counter.enabled = True

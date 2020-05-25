@@ -16,7 +16,9 @@ def defineObjects():
                        armor=0,
                        max_speed=100,
                        acceleration=8,
-                       price=1000)
+                       price=1000,
+                       scale=0.0125,
+                       color=color.red)
 
     car_narrow = Vehicle(model='car_narrow',
                          armor=1,
