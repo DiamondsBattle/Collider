@@ -34,7 +34,11 @@ class FirstPersonController(Entity):
         camera.rotation_x -= mouse.velocity[1] * self.mouse_sensitivity[0]
         camera.rotation_x = clamp(camera.rotation_x, -90, 90)
 
-        self.y += held_keys['space']
+        if held_keys['space']:
+            for i in range(5):
+                self.y += 1
+            for i in range(5):
+                self.y -= 1
         self.y -= held_keys['shift']
 
         self.direction = Vec3(

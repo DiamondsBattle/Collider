@@ -27,21 +27,7 @@ from assets.scripts.define_objects import defineObjects
 from assets.prefabs.player import Player
 from assets.prefabs.health_bar import HealthBar
 from assets.prefabs.interaction_menu import InteractionMenu, InteractionMenuButton
-
-
-def getDistanciationTo(orig: object, to: object) -> int:
-    if orig.position[0] >= to.position[0]:
-        pos_X = orig.position[0] - to.position[0]
-    else:
-        pos_X = to.position[0] - orig.position[0]
-
-    if orig.position[2] >= to.position[2]:
-        pos_Z = orig.position[2] - to.position[2]
-    else:
-        pos_Z = orig.position[2] >= to.position[2]
-
-    distanciation = (sqrt((pos_X * pos_X) + (pos_Z * pos_Z)))
-    return int(distanciation)
+from settings import title
 
 
 app = Ursina()
@@ -59,10 +45,10 @@ def input(key):
 def load_textures():
     global loaded_textures, player, interaction_menu
     if not loaded_textures:
-        if main_menu.has_changed_loading_menu_visibility:
-            main_menu.enabled = False
-            main_menu.loading_menu.enabled = False
-            secondary_menu.enabled = False
+        if True:
+            # main_menu.enabled = False
+            # main_menu.loading_menu.enabled = False
+            # secondary_menu.enabled = False
             defineObjects()
             loaded_textures = True
             player = Player(model='player',
@@ -91,12 +77,26 @@ def update():
     #         SM.changeMenuVisibility(self)
     # main_menu.txt_multi_connect_response.text = connect()
     load_textures()
+    window.title = str(title)
 
 
 loaded_textures = False
-main_menu = MM(model='quad', texture='background', scale=(15, 8.5))
-secondary_menu = SM(model='quad', scale=(15, 8.5))
+# main_menu = MM(model='quad', texture='background', scale=(15, 8.5))
+# secondary_menu = SM(model='quad', scale=(15, 8.5))
 player = None
 interaction_menu = None
+
+window.show_ursina_splash = False
+window.exit_button.visible = True
+window.exit_button.ignore_input = True
+window.fps_counter.enabled = True
+window.fps_counter.color = color.black
+window.cursor = True
+window.vsync = True
+window.windowed_position = None
+window.borderless = False
+window.fullscreen = False
+window.color = color.white
+application.cursor = True
 
 app.run()
