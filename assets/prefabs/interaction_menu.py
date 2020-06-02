@@ -9,6 +9,7 @@ class InteractionMenu(Entity):
         self.open_at_cursor = True
         self.open_duration = .25
         self.z = -99
+        self.bg = color.gray
 
         offset = lerp(.5, 2, len(self.buttons) / 8)
         for i, b in enumerate(self.buttons):

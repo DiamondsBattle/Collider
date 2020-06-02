@@ -1,16 +1,12 @@
 from ursina import *
 
-# window.show_ursina_splash = True
-# window.exit_button.visible = True
-# window.exit_button.ignore_input = True
-# window.fps_counter.enabled = True
-# window.fps_counter.color = color.black
-# window.cursor = True
-# window.vsync = True
-# window.windowed_position = None
-# window.borderless = False
-# window.fullscreen = False
-# window.color = color.white
+window.show_ursina_splash = False
+window.cursor = True
+window.vsync = True
+window.windowed_position = None
+window.borderless = False
+window.fullscreen = False
+Texture.default_filtering = None
 version = 'ALPHA'
 development_mode = True
 debug_build = 0.1

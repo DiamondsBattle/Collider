@@ -1,15 +1,14 @@
 from ursina import *
-from assets.prefabs.first_person_controller import FirstPersonController as FPS
+
 
 class Player(Entity):
-    __slots__ = ['hp', 'loadout', 'money', 'controller']
+    __slots__ = ['hp', 'loadout', 'money']
 
-    def __init__(self, hp, loadout, money, controller=FPS(), **kwargs):
+    def __init__(self, hp, loadout: object, money, **kwargs):
         super().__init__(**kwargs, scale=(0.5, 0.5, 0.5))
         self.hp = hp
         self.loadout = loadout
         self.money = money
-        self.controller = controller
         self.status = {'is_walking': False,
                        'is_jumping': False,
                        'is_driving': False,
@@ -20,6 +19,13 @@ class Player(Entity):
                        'is_dead': False,
                        'is_falling': False,
                        }
+        self.interactions_names = ['talk', 'report', 'add_as_friend', 'add_as_enemy', 'pay']
+        self.interactions_actions = {'talk': None,
+                                     'report': None,
+                                     'add_as_friend': None,
+                                     'add_as_enemy': None,
+                                     'pay': None}
+        self.controller = None
 
     def getHp(self):
         return self.hp
@@ -29,6 +35,3 @@ class Player(Entity):
 
     def getMoney(self):
         return self.money
-
-    def getController(self):
-        return self.controller

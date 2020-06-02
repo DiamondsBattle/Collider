@@ -4,6 +4,7 @@
 # DONE : Add Crate
 # DONE : Add Crate Texture
 # DONE : Add Menu
+# TODO : Add functionality to Crate
 # TODO : Add Cars
 # TODO : Add Guns
 # TODO : Add Shooting
@@ -28,6 +29,7 @@ from assets.prefabs.player import Player
 from assets.prefabs.health_bar import HealthBar
 from assets.prefabs.interaction_menu import InteractionMenu, InteractionMenuButton
 from settings import title
+from assets.prefabs.first_person_controller import FirstPersonController as FPS
 
 
 app = Ursina()
@@ -45,58 +47,62 @@ def input(key):
 def load_textures():
     global loaded_textures, player, interaction_menu
     if not loaded_textures:
-        if True:
-            # main_menu.enabled = False
-            # main_menu.loading_menu.enabled = False
-            # secondary_menu.enabled = False
+        if main_menu.has_changed_loading_menu_visibility:
+            main_menu.enabled = False
+            main_menu.loading_menu.enabled = False
+            secondary_menu.enabled = False
             defineObjects()
             loaded_textures = True
-            player = Player(model='player',
-                            hp=1000,
-                            loadout='minigun',
+            player = Player(hp=1000,
+                            loadout=gun_sniper,
                             money=23181231)
+            player_controller = FPS()
+            # player_weapon.position = Vec3((player.x + 1), player.y, player.z)
+
             money_counter = MC(position=(.6, -.45, 0),
                                money=player.getMoney())
             health_bar = HealthBar(position=(-.52, -.4, 0),
                                    max_value=player.getHp())
             interaction_menu = InteractionMenu(
-                                buttons=(
-                                    InteractionMenuButton(text='Talk'),
-                                    InteractionMenuButton(text='Friend'),
-                                    InteractionMenuButton(text='Profile'),
-                                    InteractionMenuButton(text='Pay'),
-                                    InteractionMenuButton(text='Report', color=color.red),
-                                    )
-                                )
-            interaction_menu.enabled = False
+                buttons=(
+                )
+            )
+            # for i in player.interactions_names:
+            #     new = (InteractionMenuButton(text=i, action=player.interactions_actions[i]))
+            # interaction_menu.enabled = False
 
 
 def update():
     # if key == "escape":
     #     if MM.enabled is False and LM.enabled is False:
     #         SM.changeMenuVisibility(self)
-    # main_menu.txt_multi_connect_response.text = connect()
+    main_menu.txt_multi_connect_response.text = connect()
     load_textures()
     window.title = str(title)
 
 
 loaded_textures = False
-# main_menu = MM(model='quad', texture='background', scale=(15, 8.5))
-# secondary_menu = SM(model='quad', scale=(15, 8.5))
+main_menu = MM(model='quad', texture='background', scale=(15, 8.5))
+secondary_menu = SM(model='quad', scale=(15, 8.5))
+
 player = None
 interaction_menu = None
+crate = None
+car_turr = None
+car_narrow = None
+car_cabrot = None
+car_blade = None
+gun_sniper = None
+gun_pistol = None
+gun_smg = None
+gun_assault_rifle = None
+gun_minigun = None
+city_lp = None
 
-window.show_ursina_splash = False
 window.exit_button.visible = True
 window.exit_button.ignore_input = True
 window.fps_counter.enabled = True
 window.fps_counter.color = color.black
-window.cursor = True
-window.vsync = True
-window.windowed_position = None
-window.borderless = False
-window.fullscreen = False
 window.color = color.white
-application.cursor = True
 
 app.run()

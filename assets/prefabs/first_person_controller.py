@@ -14,9 +14,8 @@ class FirstPersonController(Entity):
             model='quad',
             texture='crosshair',
             color=color.red,
-            scale=.1
+            scale=.05
             )
-
         self.position = (0, 1, 1)
         camera.position = self.position
         camera.rotation = (0, 0, 0)
@@ -69,39 +68,3 @@ class FirstPersonController(Entity):
 
         if not middle_ray.hit:
             self.position += self.direction * self.speed * time.dt
-
-
-if __name__ == '__main__':
-    from ursina.prefabs.first_person_controller import FirstPersonController
-    app = Ursina()
-    Sky(color=color.gray)
-    ground = Entity(model='plane', scale=(100, 1, 100), color=color.yellow.tint(-.2), texture='white_cube', texture_scale=(100, 100), collider='box')
-    e = Entity(
-        model='cube',
-        scale=(1, 5, 10),
-        x=2,
-        y=.01,
-        rotation_y=45,
-        collider='box',
-        texture='white_cube',
-    )
-    e.texture_scale = (e.scale_z, e.scale_y)
-    e = Entity(
-        model='cube',
-        scale=(1, 5, 10),
-        x=-2,
-        y=.01,
-        collider='box',
-        texture='white_cube',
-    )
-    e.texture_scale = (e.scale_z, e.scale_y)
-    player = FirstPersonController(y=1)
-
-    def update():
-        player.y -= 1 * time.dt
-
-        ray = raycast(player.position+player.up, player.down)
-        if ray.hit:
-            player.y = max(player.y, raycast(player.position+player.up, player.down).world_point[1])
-
-    app.run()
