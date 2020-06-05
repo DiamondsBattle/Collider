@@ -30,18 +30,24 @@ from assets.prefabs.health_bar import HealthBar
 from assets.prefabs.interaction_menu import InteractionMenu, InteractionMenuButton
 from settings import title
 from assets.prefabs.first_person_controller import FirstPersonController as FPS
+from keybinds import keybinds
 
 
 app = Ursina()
 
 
 def input(key):
-    if key == "left mouse down":
+    if key == keybinds['weapon_shoot']:
         shoot_test()
         print("Shooted !")
-    if key == "a":
+    if key == keybinds['interaction_menu']:
         interaction_menu.enabled = not interaction_menu.enabled
         # player.controller = None
+    try:
+        if distance(mouse.entity, player) <= 5:
+            message = Text(text='Press [{}] to interact'.format(keybinds['interact_main']))
+    except:
+        print('ERROR : mouse.hovered_entity = {}'.format(mouse.entity))
 
 
 def load_textures():

@@ -18,13 +18,17 @@ class Player(Entity):
                        'is_paused': False,
                        'is_dead': False,
                        'is_falling': False,
+                       'hand_gun': False,
+                       'hand_secondary': False,
+
                        }
         self.interactions_names = ['talk', 'report', 'add_as_friend', 'add_as_enemy', 'pay']
         self.interactions_actions = {'talk': None,
                                      'report': None,
                                      'add_as_friend': None,
                                      'add_as_enemy': None,
-                                     'pay': None}
+                                     'pay': None
+                                     }
         self.controller = None
 
     def getHp(self):

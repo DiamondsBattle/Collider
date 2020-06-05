@@ -1,4 +1,5 @@
 from ursina import *
+from keybinds import keybinds
 
 class FirstPersonController(Entity):
 
@@ -33,16 +34,12 @@ class FirstPersonController(Entity):
         camera.rotation_x -= mouse.velocity[1] * self.mouse_sensitivity[0]
         camera.rotation_x = clamp(camera.rotation_x, -90, 90)
 
-        if held_keys['space']:
-            for i in range(5):
-                self.y += 1
-            for i in range(5):
-                self.y -= 1
-        self.y -= held_keys['shift']
+        self.y += held_keys[keybinds['player_jump']]
+        self.y -= held_keys[keybinds['player_sneak']]
 
         self.direction = Vec3(
-            self.forward * (held_keys['z'] - held_keys['s'])
-            + self.right * (held_keys['d'] - held_keys['q'])
+            self.forward * (held_keys[keybinds['player_forward']] - held_keys[keybinds['player_backward']])
+            + self.right * (held_keys[keybinds['player_right']] - held_keys[keybinds['player_left']])
             ).normalized()
 
         self.smoothing = lerp(self.smoothing, self.target_smoothing, 4*time.dt)

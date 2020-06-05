@@ -5,7 +5,7 @@ class Weapon(Entity):
 
     def __init__(self, name, **kwargs):
         self._scales = {'sniper': Vec3(.05, .05, .03),
-                        'pistol': Vec3(1, 1, 1),
+                        'pistol': Vec3(.1, .1, .1),
                         'smg': Vec3(1, 1, 1),
                         'assault_rifle': Vec3(1, 1, 1),
                         'minigun': Vec3(1, 1, 1)}
@@ -62,7 +62,7 @@ class Weapon(Entity):
         self._bullet_speed = self._bullet_speeds[self._ammo_type]
         self._max_ammo = self._max_ammos[name]
 
-        super().__init__(**kwargs, scale=self._scales[name], model=self._models[name])
+        super().__init__(**kwargs, scale=self._scales[name], model=self._models[name], collider=self._models[name])
 
     def getFireRate(self):
         return self._fire_rate
