@@ -46,7 +46,7 @@ def defineObjects():
 
     sky = Sky(scale=100,
               collider='sky_dome',
-              texture='default_sky')
+              texture='sky_default')
 
     city = Entity(model='city_lp',
                   collider='city_lp',

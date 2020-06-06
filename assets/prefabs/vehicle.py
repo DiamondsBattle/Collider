@@ -30,8 +30,8 @@ class Vehicle(Entity):
                         'mustang': 58900,
                         'cabrot': 105000,
                         'blade': 250000}
-        self._scales = {'turr': 0,
-                        'narrow': Vec3(.01, .01, .01),
+        self._scales = {'turr': Vec3(.01, .01, .01),
+                        'narrow': 0,
                         'mustang': 0,
                         'cabrot': 0,
                         'blade': 0}
