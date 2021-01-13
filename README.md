@@ -1,2 +1,2 @@
 # Collider
-Collider was my personnal Ursina Engine Sandbox.
+Collider was my personal Ursina Engine Sandbox.
