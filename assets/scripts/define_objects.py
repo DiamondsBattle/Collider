@@ -1,6 +1,6 @@
 from ursina import *
-from assets.prefabs.vehicle import Vehicle
-from assets.prefabs.weapon import Weapon
+from Boom.vehicle import Vehicle
+from Boom.weapon import Weapon
 from assets.shaders.basic_lightning import basic_lighting_shader
 
 
@@ -13,16 +13,16 @@ def defineObjects():
                    position=Vec3(0, 0, 10),
                    shader=basic_lighting_shader)
 
-    car_turr = Vehicle(name='turr',
-                       shader=basic_lighting_shader)
-    car_narrow = Vehicle(name='narrow',
-                         shader=basic_lighting_shader)
-    # car_mustang = Vehicle(name='mustang',
-    # shader=basic_lighting_shader) # ERROR : 'ValueError: invalid literal for int() with base 10: '\n''
-    car_cabrot = Vehicle(name='cabrot',
-                         shader=basic_lighting_shader)
-    car_blade = Vehicle(name='blade',
-                        shader=basic_lighting_shader)
+    # car_turr = Vehicle(name='turr',
+    #                    shader=basic_lighting_shader)
+    # car_narrow = Vehicle(name='narrow',
+    #                      shader=basic_lighting_shader)
+    # # car_mustang = Vehicle(name='mustang',
+    # # shader=basic_lighting_shader) # ERROR : 'ValueError: invalid literal for int() with base 10: '\n''
+    # car_cabrot = Vehicle(name='cabrot',
+    #                      shader=basic_lighting_shader)
+    # car_blade = Vehicle(name='blade',
+    #                     shader=basic_lighting_shader)
 
     gun_sniper = Weapon(name='sniper',
                         shader=basic_lighting_shader)
@@ -49,7 +49,7 @@ def defineObjects():
               texture='sky_default')
 
     city = Entity(model='city_lp',
-                  collider='city_lp',
+                  collider='dec_city',
                   scale=Vec3(0.25, 0.25, 0.25),
                   position=Vec3(0, 0, 0),
                   color=color.gray,

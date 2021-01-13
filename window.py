@@ -20,18 +20,17 @@
 from ursina import *
 from assets.prefabs.main_menu import MainMenu as MM
 from assets.prefabs.secondary_menu import SecondaryMenu as SM
-from assets.prefabs.loading_menu import LoadingMenu as LM
-from assets.scripts.shoot_bullet import shoot
 from assets.scripts.multi import connect
 from assets.prefabs.money_counter import MoneyCounter as MC
 from assets.scripts.define_objects import defineObjects
-from assets.prefabs.player import Player
+from Boom.player import Player
 from assets.prefabs.health_bar import HealthBar
-from assets.prefabs.interaction_menu import InteractionMenu, InteractionMenuButton
+from assets.prefabs.interaction_menu import InteractionMenu
 from settings import title
-from assets.prefabs.first_person_controller import FirstPersonController as FPS
+from Boom.first_person_controller import FirstPersonController as FPS
 from keybinds import keybinds
 from assets.scripts.interact import interact
+from Boom.bullet import Bullet
 
 
 app = Ursina()
@@ -46,6 +45,8 @@ def input(key):
         # player.controller = None
     if key == keybinds['interaction_main']:
         interact(a=player, b=mouse.hovered_entity)
+    if key == "left mouse":
+        bullet = Bullet()
 
 
 def load_textures():
@@ -83,6 +84,10 @@ def update():
     main_menu.txt_multi_connect_response.text = connect()
     load_textures()
     window.title = str(title)
+    try:
+        print(entity.name)
+    except:
+        pass
 
 
 loaded_textures = False
@@ -92,10 +97,6 @@ secondary_menu = SM(model='quad', scale=(15, 8.5))
 player = None
 interaction_menu = None
 crate = None
-car_turr = None
-car_narrow = None
-car_cabrot = None
-car_blade = None
 gun_sniper = None
 gun_pistol = None
 gun_smg = None

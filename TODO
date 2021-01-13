@@ -1,0 +1,3 @@
+TODO: Add Map (Collider, Texture, ) [ class Map(Entity) ]
+TODO: Add Player (Collider, Textures, Arm Right/left Models, Leg Right/Left Models, Head Model, ) [ class Player(Entity) ]
+TODO: Add Weapon (Collider, Shooting, Modifications, Skins, Visor, Price, ) [b00m class Weapon(Entity) ]

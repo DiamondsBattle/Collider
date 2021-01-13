@@ -5,7 +5,8 @@ class Bullet(Entity):
     def __init__(self, **kwargs):
         super().__init__(model, **kwargs)
 
-    def move(self, bullet_speed, position):
+    @staticmethod # Do not use
+    def move(bullet_speed, position):
         per_second_speed = bullet_speed
         per_milisecond_speed = (per_second_speed / 1000)
         something = True # Until a raycast detects the bullet touches something

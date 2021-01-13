@@ -1,4 +1,6 @@
 from ursina import *
+from Boom import custom_entity
+from keybinds import keybinds
 
 
 class Vehicle(Entity):
@@ -8,26 +10,31 @@ class Vehicle(Entity):
         self._models = {'turr': 'car_turr',
                         'narrow': 'car_narrow',
                         'mustang': 'car_mustang',
+                        'mobilotti': 'car_mobilotti',
                         'cabrot': 'car_cabrot',
                         'blade': 'car_blade'}
         self._armors = {'turr': 0,
                         'narrow': 1,
                         'mustang': 2,
-                        'cabrot': 3,
+                        'mobilotti': 3,
+                        'cabrot': 4,
                         'blade': 5}
         self._max_speeds = {'turr': 100,
                             'narrow': 150,
                             'mustang': 170,
+                            'mobilotti': 192,
                             'cabrot': 210,
                             'blade': 260}
         self._times_to_100_kmph = {'turr': 8,
                                    'narrow': 5,
                                    'mustang': 6,
+                                   'mobilotti': 7,
                                    'cabrot': 4,
                                    'blade': 3}
         self._prices = {'turr': 10000,
                         'narrow': 28500,
                         'mustang': 58900,
+                        'mobilotti': 'car_mobilotti',
                         'cabrot': 105000,
                         'blade': 250000}
         self._scales = {'turr': Vec3(.01, .01, .01),

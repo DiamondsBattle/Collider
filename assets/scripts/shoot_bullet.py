@@ -1,6 +1,5 @@
 from ursina import *
-from time import sleep
-from assets.prefabs.bullet import Bullet
+from Boom.bullet import Bullet
 
 def shoot(gun, gun_pos, facing):
     speed = gun.getBulletSpeed

@@ -84,3 +84,8 @@ class Weapon(Entity):
 
     def getMaxAmmo(self):
         return self._max_ammo
+
+    def interact(self):
+        if mouse.hovered_entity == self:
+            if distance(self, a):
+                Text(text='[{}] to pick-up'.format(keybinds['interact']), position=Vec3(self.x, (self.y + 1), self.z))
