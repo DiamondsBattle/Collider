@@ -37,9 +37,9 @@ app = Ursina()
 
 
 def input(key):
-    if key == keybinds['weapon_shoot']:
-        shoot_test()
-        print("Shooted !")
+    # if key == keybinds['weapon_shoot']:
+    #     shoot_test()
+    #     print("Shooted !")
     if key == keybinds['interaction_menu']:
         interaction_menu.enabled = not interaction_menu.enabled
         # player.controller = None
